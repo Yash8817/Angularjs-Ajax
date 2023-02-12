@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+        <script type="text/javascript" src="script.js"></script>
+    </head>
+    <body ng-app="myapp">
+        <div ng-controller="products">
+            <h1>Demo of http() Post Method</h1>           
+            <hr>
+            
+            Search product by id : 
+                <input type=text ng-model="search_id">
+                <button ng-click="getProductbyID()">Search</button>            
+            <br>
+            
+            <br><br>            
+            <table id=result class="centerme tableui">
+                <tr ng-repeat="product in products">
+                    <td width=5%>{{product.product_id}}</td>
+                    <td width=55%>{{product.display_name}}</td>
+                    <td width=15%>{{product.price}}</td>                  
+                </tr>
+            </table>              
+        </div>
+    </body>
+
+    <style>
+        .redfont{
+            color:red;
+        }        
+        .centerme{
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .tableui{
+            border : 2;
+            border-style: solid;
+            border-collapse: collapse;
+            padding: 5px;
+            width:60%;
+        }            
+        
+        #result tr:nth-child(odd) {
+            background-color: #f1f1f1;
+        }
+
+        #result tr:nth-child(even) {
+        background-color: #ffffff;
+        }
+
+        .priceLow{
+            color:blue;
+            font-weight: "bold";
+        }
+        .priceHigh{
+            color:red;
+        }
+
+    </style>
+</html>
