@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+        <script type="text/javascript" src="script.js"></script>
+    </head>
+    <body ng-app="myapp">
+        <div ng-controller="products">
+            <h1>AJAX DEMO</h1>
+            <br>
+            <button ng-click="getAllProducts()">Get All Products</button>
+            <br><br><br>
+            Product name is : {{prod[0].display_name}}            
+        </div>
+    </body>
+    <style>
+        .redfont{
+            color:red;
+        }
+    </style>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+        <script type="text/javascript" src="script.js"></script>
+    </head>
+    <body ng-app="myapp">
+        <div ng-controller="products">
+            <h1>AJAX DEMO</h1>
+            
+            <table width=80%>
+                <tr>
+                    <td>
+                        <button ng-click="getAllProducts()">Get All Products</button>
+                    </td>
+                    <td>
+                        <button ng-click="getProductsbyTitan()">Get Products by Titan</button>
+                    </td>
+                    <td>
+                        <button ng-click="getProductsGT1000()">Get Products Having Price > 1000</button>
+                    </td>
+                </tr>
+            </table>
+            <br><br><br>
+            
+            Search products : <input type=text ng-model="searchString"><br>
+            
+            <table id=result class="centerme tableui">
+                <tr ng-repeat="product in products | filter : {'display_name' : searchString}">
+                  <td width=5%>{{product.product_id}}</td>
+                  <td width=55%>{{product.display_name | uppercase | limitTo : 10}}</td>
+                  <td width=15%>{{product.price | currency : "Rs " : 3 }}</td>
+                  <td align=center>{{product.brand_id}}</td>
+                </tr>
+            </table>  
+            <br>
+            
+            <hr>
+            <br><br><br>                      
+        </div>
+    </body>
+
+    <!--
+        Try -
+            #get product row that contains character i in any of the column
+                filter : 'i'
+            
+            #get product having display_name contains character 1
+                filter : {'display_name' : '1'}
+
+            #
+
+    -->
+    <style>
+        .redfont{
+            color:red;
+        }        
+        .centerme{
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .tableui{
+            border : 2;
+            border-style: solid;
+            border-collapse: collapse;
+            padding: 5px;
+        }            
+        
+        #result tr:nth-child(odd) {
+            background-color: #f1f1f1;
+        }
+
+        #result tr:nth-child(even) {
+        background-color: #ffffff;
+        }
+
+    </style>
+</html>

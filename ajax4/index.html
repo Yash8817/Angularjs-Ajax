@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+        <script type="text/javascript" src="script.js"></script>
+    </head>
+    <body ng-app="myapp">
+        <div ng-controller="products">
+            <h1>AJAX DEMO</h1>
+            
+            <table width=80%>
+                <tr>
+                    <td>
+                        <button ng-click="getAllProducts()">Get All Products</button>
+                    </td>
+                    <td>
+                        <button ng-click="getProductsbyTitan()">Get Products by Titan</button>
+                    </td>
+                    <td>
+                        <button ng-click="getProductsGT1000()">Get Products Having Price > 1000</button>
+                    </td>
+                </tr>
+            </table>
+            <br><br><br>
+            <table id=result class="centerme tableui">
+                <tr>
+                    <tr >
+                        <td>id</td>
+                        <td>name</td>
+                        <td>price</td>
+                    </tr>
+                </tr>
+                <tr ng-repeat="product in products | orderBy : sort_by">
+                  <td width=30%>{{product.product_id}}</td>
+                  <td>{{product.display_name}}</td>
+                  <td>{{product.price}}</td>
+                </tr>
+            </table>  
+            <br>
+            <button ng-click="sort('brand_id','ASC')">Sort by Brand ID ASC</button><br><br>
+            <button ng-click="sort('brand_id','DESC')">Sort by Brand ID ASC</button><br><br>
+            <button ng-click="sort('display_name','ASC')">Sort by Product Name ASC</button><br><br>
+            <button ng-click="sort('display_name','DESC')">Sort by Product Name DESC</button><br><br>
+            <button ng-click="sort('price','ASC')">Sort by Product Price ASC</button><br><br>
+            <button ng-click="sort('price','DESC')">Sort by Product Price DESC</button><br><br>
+            <hr>
+            <br><br><br>                      
+        </div>
+    </body>
+    <style>
+        .redfont{
+            color:red;
+        }        
+        .centerme{
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .tableui{
+            border : 2;
+            border-style: solid;
+            border-collapse: collapse;
+            padding: 5px;
+        }            
+        
+        #result tr:nth-child(odd) {
+            background-color: #f1f1f1;
+        }
+
+        #result tr:nth-child(even) {
+        background-color: #ffffff;
+        }
+
+    </style>
+</html>
